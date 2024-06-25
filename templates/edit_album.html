@@ -1,0 +1,50 @@
+{% extends "layoutcreator.html" %}
+{% block title %}
+	Edit Album
+{% endblock %}
+{% block content %}
+	<h3>Edit Album- {{album.name}}</h3>
+	<hr>
+	<form  method="post">
+        <div>
+            <label for="name" class="form-label">Set album name:</label>
+            <input type="text" class="form-control" id="name" name="name" required value="{{album.name}}">
+        </div>
+        <div>
+            <label for="genre" class="form-label">Genre:</label>
+            <input type="text" class="form-control" id="genre" name="genre" required value="{{album.genre}}">
+        </div>
+        <div>
+            <label for="artist" class="form-label">Artist:</label>
+            <input type="text" class="form-control" id="artist" name="artist" required value="{{album.artist}}">
+        </div>
+        <br>
+        <div>
+             <a href="{{url_for('creator.add_song_to_album', album_id=album.id)}}" class="btn btn-primary">Add song to album</a>
+        </div>
+        <br>
+        <h4>Albums's songs:</h4>
+        	<p></p>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>View</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                     {% for song in album.songs %}
+                        <tr>
+                            
+                            <td class="leftmost">{{ song.name}}</td>
+                            <td><a href="{{ url_for('creator.view_song', song_id=song.id) }}" class="btn btn-primary"><i class="bi bi-eye bi-2x" color="green"></i></a></td>
+                        
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        <button type="submit" class="btn btn-success btn-lg"> Save Changes</button>
+    </form>
+
+{% endblock %}

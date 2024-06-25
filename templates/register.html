@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}
+	Registration Page
+{% endblock %}
+{% block content %}
+<h2>Register and enjoy Beatzz!</h2>
+
+<div class="regis">
+<form method="post" name="register">
+	<label for="name"><b>Name</b></label>
+	<input type="text" name="name" id='items' placeholder="Name" required>
+	<br><br>
+    <label for="username"><b>Username</b></label>
+    <input type="text" name="username" id="items" placeholder="Username" required>
+    <br><br>
+    <label for="password"><b>Password</b></label>
+    <input type="password" name="password" id="items" placeholder="Password" required>
+    <br><br>
+    <input type="submit" name="log" id="reg" value="Register" class="btn btn-success">
+</form>
+</div>
+{% endblock %}
+{% block style %}
+<style >
+	body{
+		background-color: aliceblue;
+	}
+	.regis{
+
+        width: 390px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 480px;
+        padding: 70px;
+        background: turquoise;
+        border-radius: 15px ;
+    }
+	h2{
+	    text-align: center;
+	    color: black;
+	    padding: 20px;
+	}
+	label{
+	    color: black;
+	    font-size: 17px;
+	}
+	#items{
+	    width: 250px;
+	    height: 25px;
+	    border-radius: 5px;
+	    border:none;
+	    padding: 9px;
+	}
+	#reg{
+	    width: 250px;
+	    height: 30px;
+	    color: white;
+	    border: none;
+	    font-size: 14px ;
+	    padding: 9px;
+	}
+</style>
+{% endblock %}

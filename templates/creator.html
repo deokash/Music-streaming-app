@@ -1,0 +1,85 @@
+{% extends "layoutcreator.html" %}
+{% block content %}
+
+<div class="container mt-4">
+    <h1 style="color: rosybrown;"><b>Creator's Dashboard<b></h1>
+    <div class="row mb-4" >
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body" id="head">
+                    <h5 class="card-title">Total Songs</h5>
+                    <p class="card-text">{{ total_songs }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body" id="head">
+                    <h5 class="card-title">Average Rating</h5>
+                    <p class="card-text">{{avg_rating}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body" id="head">
+                    <h5 class="card-title">Total Albums</h5>
+                    <p class="card-text">{{ total_albums }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <br>
+            <h3 style="color: rosybrown;"><b>Your Songs<i class="bi bi-music-note-list"></i></h3>
+            <p></p>
+            <table class="table" style="background-color: rosybrown;">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>View</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for song in creator_songs %}
+                        <tr>
+                            
+                            <td class="leftmost">{{ song.name}}</td>
+                            <td><a href="{{ url_for('creator.view_song', song_id=song.id) }}" class="btn btn-primary"><i class="bi bi-eye bi-2x" color="green"></i></a></td>
+                            <td><a href="{{ url_for('creator.edit_song', song_id=song.id) }}" class="btn btn-primary"><i class="bi bi-pencil bi-2x"></i></a></td>
+                            <td><a href="{{ url_for('creator.delete_song', song_id=song.id) }}" class="btn btn-danger"><i class="bi bi-trash bi-2x" color: red></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+
+{% endblock %}
+{% block style %}
+    <style>
+    body{
+        background-color: lightgoldenrodyellow;
+    }
+    #head{
+        background: lavenderblush;
+    }
+    tr thead{
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        background: ;
+    }
+    .leftmost{
+        order:-1;
+    }
+    </style>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+<br>
+	<h1>Edit Profile
+	</h1>
+	<h3>@{{user.username}}</h3>
+	<hr>
+	<div class="container">
+    <div class="container" id="profile">
+		<form id="login" method="post">
+		    <label for="username" class="form-label"><b>Username</b>
+		    <input type="text" name="username" id="items" class="form-control" value="{{user.username}}" required></label>
+		    <br><br>
+		    <label for="name" class="form-label">Name:
+	        <input type="text" id="items" name="name" value="{{user.name}}" required class="form-control"></label>
+	        <br><br>
+	        <label for="ccpassword" class="form-label">Current Password:
+	        <input type="password" id="items" name="ccpassword" required class="form-control"></label>
+		    <br><br>
+		    <label for="password"class="form-label">New Password:
+    		<input type="password" id="items" name="password" required class="form-control"></label>
+    		<br><br>
+    		<button type="submit" class="btn btn-success">Save Changes</button>
+		</form>
+	</div>
+        
+{% endblock %}
+{% block style %}
+	<style >
+		body{
+			background-color: lightskyblue;
+		}
+		form{
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+		}
+		h2{
+			text-align: center;
+		}
+	</style>
+{% endblock %}

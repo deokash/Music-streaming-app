@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+	Users list
+{% endblock %}
+{% block content %}
+	<br><br>
+	<div class="container mt-4">
+    <h1>Registered Users!</h1>
+
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Username</th>
+                        <th>Name</th>
+            
+
+                    </tr>
+                    {% for user in users %}
+                    <tr>
+                        <td class="leftmost">{{ user.id}}</td>
+                        <td>{{user.username}}</td>
+                        <td>{{user.name}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+	<style>
+		tr thead{
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        
+    }
+    body{
+    	background-color: lavender;
+    }
+	</style>
+{% endblock %}

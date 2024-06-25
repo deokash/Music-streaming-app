@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}
+	Tracks
+{% endblock %}
+{% block content %}
+	<div class="container mt-4">
+    <h1 style="color:cadetblue;"><b>App's Albums</b></h1>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Genre</th>
+                            <th>Flag</th>
+                            <th>Remove</th>
+
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for album in albums %}
+                        <tr>
+                            
+                            <td class="leftmost">{{ album.name}}</td>
+                            <td>{{album.genre}}</td>
+                            {% if album.flagged %}
+                                <td style="color: red;"><b>FLAGGED</td>
+                            {% else %}
+                                <td><a href="{{ url_for('ad.flag_album', album_id=album.id) }}" ><i class="bi bi-flag-fill"></i></a></td>
+                            {% endif %}
+                            <td><a href="{{ url_for('ad.remove_album', album_id=album.id) }}"><i class="bi bi-trash-fill bi-3x" color: red></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+<style>
+    body{
+        background-color: lavender;
+    }
+</style>
+{% endblock %}

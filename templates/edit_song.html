@@ -1,0 +1,60 @@
+{% extends "layoutcreator.html"%}
+{% block content %}
+<div class="container mt-4">
+    <h2>Edit Song - {{ song.name}}</h2>
+
+    <form method="POST" action="{{ url_for('creator.edit_song', song_id=song.id) }}">
+        <div class="form-group">
+            <label for="title">Song Title:</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{ song.name}}" required>
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="artist">Artist:</label>
+            <input type="text" class="form-control" id="artist" name="artist" value="{{ song.artist }}" required>
+        </div>
+        <div class="form-group">
+            <label for="artist">Genre:</label>
+            <input type="text" class="form-control" id="artist" name="genre" value="{{ song.artist }}" required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration:</label>
+            <input type="text" class="form-control" id="duration" name="duration" value="{{ song.duration}}" required>
+        </div>
+        <br>
+         <div class="form-group">
+            <label for="date">Release Date:</label>
+            <input type="date" class="form-control" id="duration" name="date" required value="{{song.date}}">
+        </div>
+        <br>
+        <div class="form-group">
+            <label for="lyrics">Lyrics:</label>
+            <textarea class="form-control" id="lyrics" name="lyrics" rows="8" required>{{song.lyrics}}</textarea>
+        </div>
+        <br>
+        <label for="album">Select Album:</label>
+        <select name="album" id="album">
+            <option value="">None</option>
+            {% for album in albums %}
+                <option value="{{ album.id }}" {% if song.album_id == album.id %}selected{% endif %}>
+                    {{ album.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-success"> Tap here to Save Changes</button>
+    </form>
+</div>
+<br><br><br>
+{% endblock %}
+{% block style %}
+    <style>
+        textarea{
+            resize: none;
+        }
+        body{
+            background-color: lightgoldenrodyellow;
+        }
+    </style>
+{% endblock %}

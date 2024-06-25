@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}
+	All playlists
+{% endblock %}
+{% block content %}
+	<h3>Your Playlists</h3>
+<div>
+<br>
+
+<div class="container mt-4">
+    <div class="row mt-4">
+        {% for playlist in playlists %}
+        <div class="col-md-4" >
+            <div class="card">
+                <div class="card-body" style="background-color: lightgrey; color: darkblue;">
+                    <h5 class="card-title">{{ playlist.name }}</h5>
+                    <p class="card-text">Date created: {{ playlist.date}}</p>
+                    <p class="card-text"><a href="{{ url_for('view_playlist', playlist_id=playlist.id) }}">View Playlist</a></p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+{% block title %}
+	View all songs
+{% endblock %}
+{% block content %}
+<br>
+    <br><br>
+	<div class="container mt-4">
+    <h2>All Tracks </h2>
+
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Artist</th>
+                        <th>View</th>
+                        <th>Report</th>
+
+                    </tr>
+                    {% for song in all_songs %}
+                    <tr>
+                        <td class="leftmost">{{ song.name}}</td>
+                        <td>{{song.artist}}</td>
+                        <td><h4><a href="{{ url_for('user.viewuser_song', song_id=song.id) }}"><i class="bi bi-eye" color="green"></i></a></h4></td>
+                        <td><a href="{{url_for('user.report_song',song_id=song.id)}}" class='btn btn-danger'>Report</a></td>   
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+	<style>
+	tr thead{
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        background: ;
+    }
+  
+  
+	</style>
+{% endblock %}

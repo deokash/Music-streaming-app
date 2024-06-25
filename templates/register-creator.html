@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block title %}
+	Creator Registration
+{% endblock %}
+{% block content %}
+	<div class="register">
+	<form method="post">
+		<h1><b>Register as Creator!<b></h1>
+		<p><b>Create music and let the world know you!<b></p>
+    	<button type="submit" name="login" value='Register' class="btn btn-success" >
+    		<span>Register</span><span></span><i class="bi bi-hand-index-thumb"></i></button>
+    </form>
+	</div>
+{% endblock %}
+{% block style %}
+	<style>
+	.register{
+        width: 450px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 480px;
+        padding: 70px;
+        background: lightsalmon;
+        border-radius: 15px ;
+        border: 2px solid black;
+        margin-top: 80px;
+
+	}
+	.login{
+		cursor: pointer;
+		align-items: center;
+	}
+	h1{
+		text-align: center;
+	}
+	p{
+		color: white;
+		text-align: center;
+		font-size: 30px;
+	}
+
+	</style>
+{% endblock %}

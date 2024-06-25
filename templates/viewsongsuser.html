@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% block title %}
+	{{ song.name }}
+{% endblock %}
+{% block content %}
+	<div class="container mt-5 mb-5" id="view" >
+    <div class="card">
+        <div class="card-body" style="background-color: lightgrey ;">
+            <h1 class="card-title">{{ song.name }}</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="card-text"><strong>Artist:</strong> {{ song.artist }}</p>
+                    <p class="card-text"><strong>Genre:</strong> {{ song.genre }}</p>
+                    <p class="card-text"><strong>Release Date:</strong> {{ song.date }}</p>
+                    <p class="card-text"><strong>Duration:</strong> {{ song.duration }}</p>
+                    {% if user_rating %}
+                        <p><strong>You rated:</strong> {{ user_rating.rating }}</p>
+                    {% endif %}
+                    {% if not user_rating.rating %}
+                    <form method="POST" action="{{ url_for('user.viewuser_song', song_id=song.id) }}">
+                        {{ form.hidden_tag() }}
+                        {{ form.csrf_token }}
+                        <label for="rating"><strong>Rate the Song:</strong></label>
+                        {{ form.rating }}
+                        <button type="submit">Submit Rating</button>
+                    </form>
+                    {% endif %}
+                </div>
+
+                
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="lyrics"><strong>Lyrics:</strong></label>
+                <pre id="lyrics" style="white-space: pre-line;">{{ song.lyrics }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}
+{% block style %}
+	<style>
+    body{
+        background-color: lemonchiffon;
+    }
+  .navbar{
+    width: 100%;
+    padding: 0px;
+  }
+  #view{
+    width: 600px;
+    overflow: hidden;
+    padding: 70px;
+    background-color: lightgrey;
+    border-radius: 15px ;
+    border: 2px solid black;
+    margin-top: 80px;
+  }
+</style>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+{% block title %}
+	Albums
+{% endblock %}
+{% block content %}
+<br>
+<div class="container-fluid padding-3" action='{{url_for("user.search_songs")}}'>
+    <form>
+        <select name="category" id='category' class="form-select">
+            <option value="song" selected>Songs</option>
+            <option value="album">Albums</option>
+        </select>
+        <select name="parameter" id="parameter" class="form-select">
+            <option value="name" selected>Name</option>
+            <option value="genre">Genre</option>
+            <option value="artist">Artist</option>
+        </select>
+        <input type="text" name="query" class="form-control" placeholder="Search bar" id="query">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+<br><br>
+ <div class="container mt-4 mb-4">
+        <div class="row mt-4 mb-4">
+            {% for album in albums %}
+            <div class="col-md-4" >
+                <div class="card">
+                    <div class="card-body" style="background-color: lightgrey; color: darkblue;">
+                        <h5 class="card-title">{{ album.name }}</h5>
+                        <p class="card-text">Artist: {{ album.artist }}</p>
+                        <p class="card-text"><a href="{{ url_for('user.viewuser_album', album_id=album.id) }}"><i class ="bi bi-eye-fill">View album</i></a></p>
+                    </div>
+                </div>
+                <br>
+            </div>
+            {% endfor %}
+            <br>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+    <style>
+    body{
+        background-color: ;
+    }
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    #parameter{
+        margin-left: 8px;
+        margin-right: 8px;
+        width: 15%;
+    }
+    #category{
+        margin-left: 8px;
+        margin-right: 8px;
+        width: 15%;
+
+    }
+    #query{
+        margin-left: 15px;
+        margin-right: 15px;
+        width: 40%;
+
+    </style>
+{% endblock %}

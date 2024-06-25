@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}
+	Create Playlist
+{% endblock %}
+{% block content %}
+<br>
+	<h1>Create Your Playlist</h1>
+    <br>
+    <hr>
+    <div class="container mt-10">
+    <form method="POST" action="{{ url_for('user.create_playlist') }}">
+        <h5>
+            <div>
+                <label for="playlist_name">Playlist Name:</label>
+                <input type="text" name="playlist_name" required>
+            </div>
+            <br>
+            <div>
+                <label for="date">Date Created:</label>
+                <input type="date" name="date" required>
+            </div>
+            <br>
+            <div style="background-color: burlywood; padding: 10px;" class="container ml-4 mb-4">
+                <label>Songs:</label>
+                <br>
+                {% for song in all_songs %}
+                    <br><input type="checkbox" name="songs" value="{{ song.id }}">
+                    {{ song.name }} - {{ song.artist }}<br>
+                {% endfor %}
+            </div>
+        </h5>
+        <br>
+
+        <button type="submit" class="btn btn-success" style="font-size: 20px;">Create Playlist</button>
+    </form>
+</div>
+{% endblock %}
+{% block style %}
+    <style >
+        body{
+            background-color: lightgoldenrodyellow;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+{% endblock %}

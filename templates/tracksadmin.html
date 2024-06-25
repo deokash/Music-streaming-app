@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}
+	Tracks
+{% endblock %}
+{% block content %}
+<br>
+	<div class="container mt-4">
+    <h1 style="color: darkblue;"><B>App's Tracks</B> </h1>
+    <br>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>View</th>
+                            <th>Flag</th>
+                            <th>Remove</th>
+
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for song in songs %}
+                        <tr>
+                            
+                            <td class="leftmost">{{ song.name}}</td>
+                            <td><a href="{{ url_for('ad.viewadmin_song', song_id=song.id) }}"><i class="bi bi-eye-fill bi-3x" color="green"></i></a></td>
+                            {% if song.flagged %}
+                                <td style="color: red;"><b>FLAGGED</td>
+                            {% else %}
+                                <td><a href="{{ url_for('ad.flag_song', song_id=song.id) }}" ><i class="bi bi-flag-fill"></i></a></td>
+                            {% endif %}
+                            <td><a href="{{ url_for('ad.remove_song', song_id=song.id) }}"><i class="bi bi-trash-fill bi-3x" color: red></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+<style>
+    
+body{
+    background-color: lightgrey;
+}
+</style>
+{%  endblock %}

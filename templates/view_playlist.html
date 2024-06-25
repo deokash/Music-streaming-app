@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+{% block title %}
+    View Playlist
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{playlist.name}}</h2>
+    <p>Date created:{{playlist.date}}</p>
+    <a href="{{url_for('user.delete_playlist',playlist_id=playlist.id)}}" class="btn btn-danger">Playlist <i class="bi bi-trash me-2"></i></a>
+    <hr>
+    <h3>Songs</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>View</th>
+                            <th>Remove</th>
+
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for song in playlist.songs %}
+                        <tr>
+                            
+                            <td class="leftmost">{{ song.name}}</td>
+                            <td><a href="{{ url_for('user.viewuser_song', song_id=song.id) }}"><i class="bi bi-eye bi-2x" color="green"></i></a></td>
+                            <td><a href="{{ url_for('user.remove_song_from_playlist', song_id=song.id, playlist_id=playlist.id) }}"><i class="bi bi-trash bi-2x" color: red></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+<style>
+body{
+    background-color: ;
+}
+tr thead{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    background: ;
+}
+.leftmost{
+    order:-1;
+}
+
+</style>
+{% endblock %}

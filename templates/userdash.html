@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+{% block title %}
+    User's home
+{% endblock %}
+{% block content %}
+<br>
+    <h1>Hello, {{user.name}}</h1>
+    <br>
+    <hr>
+    <br>
+    <h2>Tracks available</h2>
+    <div class="container mt-4">
+        <div class="row mt-4">
+
+            {% for song in songs %}
+            <div class="col-md-4" >
+                <div class="card">
+                    <div class="card-body" style="background-color: lightgrey; color: darkblue;">
+                        <h5 class="card-title">{{ song.name }}</h5>
+                        <p class="card-text">Artist: {{ song.artist }}</p>
+                        <p class="card-text"><a href="{{ url_for('user.viewuser_song', song_id=song.id) }}">Song details</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% if songscount > 3 %}
+        <div class="row mt-2 justify-content-end">
+            <div class="col-md-2">
+                <a href="{{url_for('user.all_songs')}}" class="btn btn-primary">Show More</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <br>
+    <hr>
+    <br>
+    <h2>Albums</h2>
+    <br>
+    <div class="container mt-4">
+        <div class="row mt-4">
+            {% for album in albums %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="background-color: lightcyan; color: darkcyan;">
+                        <h5 class="card-title">{{ album.name }}</h5>
+                        <p class="card-text">Artist: {{ album.artist }}</p>
+                        <p class="card-text">Genre: {{ album.genre }}</p>
+                        <p><a href="{{ url_for('user.viewuser_album', album_id=album.id) }}">View Album</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% if albumscount > 3 %}
+        <div class="row mt-2 justify-content-end">
+            <div class="col-md-2">
+                <a href="{{url_for('user.all_albums')}}" class="btn btn-primary">Show More</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <hr>
+    <br>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+               <h2>Your Playlists!</h2>
+               <br>
+               <a href="{{url_for('user.create_playlist')}}" class="btn btn-primary">Create playlists</a>
+        </div>
+    </div>
+    <div class="container mt-4">
+        <div class="row mt-4">
+            {% for playlist in playlists %}
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body" style="background-color: lightgreen; color: darkgreen;">
+                        <h5 class="card-title" >{{ playlist.name }}</h5>
+                        <p class="card-text">Creation date: {{ playlist.date }}</p>
+                        <p><a href="{{url_for ('user.view_playlist' ,playlist_id=playlist.id)}}">View playlist</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <br>
+        {% if playlistcount > 3 %}
+        <div class="row mt-2 justify-content-end">
+            <div class="col-md-2">
+                <a href="{{url_for('user.all_playlists')}}" class="btn btn-primary">Show More</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <br>
+    <br>
+{% endblock %}

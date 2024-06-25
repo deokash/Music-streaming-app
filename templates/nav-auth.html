@@ -1,0 +1,77 @@
+<div class='navbar'>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Beatzz</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        {% if session.role=="creator" %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.userdash')}}">Home |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('creator.creator_dashboard')}}">Switch to Creator |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.profile')}}">Profile |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.search')}}">Search |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('logout')}}">Logout</a>
+        </li>
+       
+        {% elif session.role=="user" %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.userdash')}}">Home |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.register_creator')}}">Creator |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.profile')}}">Profile |</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.search')}}">Search |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('logout')}}">Logout |</a>
+        </li>
+        {% elif session.role=="admin" %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('ad.dashboard')}}">Dashboard  |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('ad.tracksadmin')}}">Tracks  |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('ad.albumsadmin')}}">Albums |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('ad.userslist')}}">Users |</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('logout')}}">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link active" href="{{url_for('user.login')}}">Login |</a>
+        </li>
+        <li class='nav-item'>
+          <a class="nav-link active" href="{{url_for('user.register')}}">Register |</a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>
+<style>
+  .navbar{
+    width: 100%;
+    padding: 0px;
+  }
+</style>

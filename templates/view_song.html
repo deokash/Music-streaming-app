@@ -1,0 +1,41 @@
+{% extends "layoutcreator.html" %}
+{% block title %}
+    View Song
+{% endblock %}
+{% block content %}
+<div class="container mt-5 mb-5" >
+    <div class="card">
+        <div class="card-body" style="background-color: lightgrey ;">
+            <h1 class="card-title"><b>{{ song.name }}</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="card-text"><strong>Artist:</strong> {{ song.artist }}</p>
+                    <p class="card-text"><strong>Genre:</strong> {{ song.genre }}</p>
+                    <p class="card-text"><strong>Release Date:</strong> {{ song.date }}</p>
+                    <p class="card-text"><strong>Duration:</strong> {{ song.duration }}</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
+                <label for="lyrics"><strong>Lyrics:</strong></label>
+                <pre id="lyrics" style="white-space: pre-line;">{{ song.lyrics }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>
+{% endblock %}
+{% block style %}
+<style>
+    body{
+        background-color: lemonchiffon;
+    }
+  .navbar{
+    width: 100%;
+    padding: 0px;
+  }
+    
+</style>
+{% endblock %}

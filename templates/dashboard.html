@@ -1,0 +1,104 @@
+{% extends 'layout.html' %}
+{% block title %}
+    Admin dashboard
+{% endblock %}
+{% block content %}
+<br><br>
+    <h1>Admin's dashboard</h1>
+    <hr>
+<div class="container mt-4">
+    <h2>App Statistics </h2>
+
+    <div class="row mt-4">
+        <div class="col-md-2" style="background-color: ">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Total Users</h4>
+                    <h4 class="card-text">{{ userstotal }}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Total Creators</h4>
+                    <h4 class="card-text">{{ creatortotal}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Tracks</h4>
+                    <h4 class="card-text">{{ songstotal}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Albums</h4>
+                    <h4 class="card-text">{{ albumstotal}}</h4>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Genre</h4>
+                    <h4 class="card-text">{{ genretotal}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tracks</h5>
+                    <p class="card-text">{{songstotal}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Albums</h5>
+                    <p class="card-text">{{albumstotal}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Genre</h5>
+                    <p class="card-text">{{genretotal}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<br><br>
+<div class="row mt-4">
+        <div class="col-md-6" >
+            <div class="card">
+                <div class="card-body"style="background-color: rosybrown;">
+                    <h4 class="card-title">Most rated song on the app:</h4>
+                    <h4 class="card-text">{{ highest_rated_song_name}} </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block style %}
+    <style> 
+        body{
+            background-color: green;
+        }
+        p{
+            font-size: 20px;
+        }
+    </style>
+{% endblock %}

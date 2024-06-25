@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% block title %}
+	Admin Login
+{% endblock %}
+
+{% block content %}
+<h2><b>Admin's Login Page</b></h2><br>
+	<div class="login">
+    <form method="post">
+        <label for="username"><b>Username</b></label>
+        <input type="text" name="username" id="items" placeholder="Username">
+        <br><br>
+        <label for="password"><b>Password</b></label>
+        <input type="Password" name="password" id="items" placeholder="Password">
+        <br><br>
+        <input type="submit" id="logad" value='Login' class='btn btn-success'>
+    </form>
+	</div>
+{% endblock %}
+
+{% block style %}
+<style >
+	.login{
+        width: 390px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 480px;
+        padding: 70px;
+        background: darkgrey;
+        border-radius: 15px ;
+
+	}
+	h2{
+	    text-align: center;
+	    color: gray;
+	    padding: 20px;
+	}
+	label{
+	    color: black;
+	    font-size: 17px;
+	}
+	#items{
+	    width: 250px;
+	    height: 25px;
+	    border-radius: 5px;
+	    border:none;
+	    padding-left: 9px;
+	}
+	#logad{
+	    width: 250px;
+	    height: 30px;
+	    font-size: 16px ;
+	    cursor: pointer;
+	    background-color: purple;
+	    color: white;
+	    border: none;
+	    padding-left: 9px;
+</style>
+{% endblock %}

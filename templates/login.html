@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block title %}
+	User Login
+{% endblock %}
+
+{% block content %}
+<h1><b>Welcome to Beatzz<b></h1>
+
+<div class="container mt-3">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+        	<p>User Login Page</p>
+			<div class="login">
+			<form id="login" method="post">
+			    <label for="username"><b>Username</b></label>
+			    <input type="text" name="username" id="items" placeholder="Username" required>
+			    <br><br>
+			    <label for="pwd"><b>Password</b></label>
+			    <input type="Password" name="pwd" id="items" placeholder="Password" required>
+			    <br><br>
+			    <input type="submit" name="log" id="log" value="Login" class="btn btn-success">
+			</form>
+			</div>
+		</div>
+    </div>
+	<div class="row justify-content-center mt-5">
+        <div class="col-md-2">
+            <a href="/admin" class="btn btn-primary">Admin Login</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block style %}
+<style >
+	body{
+		background-color: lightgoldenrodyellow;
+	}
+	.login{
+
+        width: 390px;
+        overflow: hidden;
+        margin: auto;
+        margin: 20 0 0 480px;
+        padding: 70px;
+        background: darkslategrey;
+        border-radius: 15px ;
+    }
+	h1{
+	    text-align: center;
+	    color: darkslategrey;
+	    padding: 20px;
+	
+	}
+	p{
+		text-align: center;
+		font-size: 25px;
+	}
+	label{
+	    color: floralwhite;
+	    font-size: 17px;
+	}
+	#items{
+	    width: 250px;
+	    height: 25px;
+	    border-radius: 5px;
+	    border:none;
+	    padding: 9px;
+	}
+	#log{
+	    width: 250px;
+	    height: 30px;
+	    color: floralwhite;
+	    border: none;
+	    font-size: 14px ;
+	    padding: 8px;
+	}
+</style>
+{% endblock %}

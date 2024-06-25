@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block title %}
+	View song
+{% endblock %}
+{% block content %}
+	<div class="container mt-5 mb-5" id="view" >
+    <div class="card">
+        <div class="card-body" style="background-color:#CAEEC2">
+            <h1 class="card-title"><b>{{ song.name }}</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="card-text"><strong>Artist:</strong> {{ song.artist }}</p>
+                    <p class="card-text"><strong>Genre:</strong> {{ song.genre }}</p>
+                    <p class="card-text"><strong>Release Date:</strong> {{ song.date }}</p>
+                    <p class="card-text"><strong>Duration:</strong> {{ song.duration }}</p>
+                    <p class="card-text"><strong>Reported by {{report}} user(s)!</strong></p>
+                    <p class="card-text"><strong>Blacklisted: {{blacklisted}}</strong></p>
+
+                    <br>
+                    <form method="post" action="{{ url_for('ad.blackwhitelist', creator_id=creator.id) }}">
+                        <p>Creator status:</p>
+                        <h6><select name="status">
+                            <option value="whitelist" {% if creator.status == whitelist %} selected{% endif %}>Whitelist</option>
+                            <option value="blacklist" {% if creator.status == blacklist %}selected{% endif %}>Blacklist</option>
+                        </select>
+                        
+                        <button type="submit">Submit</button></h6>
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <label for="lyrics"><strong>Lyrics:</strong></label>
+                <pre id="lyrics" style="white-space: pre-line;">{{ song.lyrics }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+<style>
+    p{
+        font-size: 20px;
+    }
+</style>
+{% endblock %}

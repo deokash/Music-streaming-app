@@ -1,0 +1,60 @@
+{% extends "layoutcreator.html" %}
+{% block title %}
+	Albums
+{% endblock %}
+{% block content %}
+	
+
+<div class="row mt-10">
+    <div class="col-md-12 mt-5">
+        <h3>Your Albums</h3>
+        <div>
+        <br>
+        <form method="POST">
+			<button type="submit" class="btn btn-success">Create Album</button>
+		</form>
+        </div>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>View</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                {% for album in albums %}
+                    <tr>
+                        
+                        <td class="leftmost">{{ album.name}}</td>
+                        <td><a href="{{ url_for('creator.view_album', album_id=album.id) }}" class="btn btn-primary"><i class="bi bi-eye bi-2x" color="green"></i></a></td>
+                        <td><a href="{{ url_for('creator.edit_album', album_id=album.id) }}" class="btn btn-primary"><i class="bi bi-pencil bi-2x"></i></a></td>
+                        <td><a href="{{ url_for('creator.delete_album', album_id=album.id) }}" class="btn btn-danger"><i class="bi bi-trash bi-2x" color: red></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+    <style>
+    body{
+        background-color:lightgoldenrodyellow ;
+    }
+    tr thead{
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer;
+        background: ;
+    }
+    .leftmost{
+        order:-1;
+    }
+
+
+    </style>
+{% endblock %}

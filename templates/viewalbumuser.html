@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+{% block title %}
+    View Album
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h1 style="color: darkcyan;"><b>{{album.name}}</h1>
+    <h4 style="color:darkcyan;">Genre: {{ album.genre }}</h4>
+    <br>
+    <hr>
+    <h3 style="color: darkcyan;">Songs in the album</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table" >
+                <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Artist</th>
+
+                        </tr>
+                    </thead>
+                <tbody>
+                    {% for song in album.songs %}
+                        <tr>
+                            
+                            <td class="leftmost">{{ song.name}}</td>
+                            <td>{{song.artist}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block style %}
+<style>
+body{
+    background-color: lightcyan ;
+}
+tr thead{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+.leftmost{
+    order:-1;
+}
+</style>
+{% endblock %}
